@@ -54,7 +54,7 @@ void showOnRSSIOnBar(int rssi, int LEDS[], Adafruit_MCP23017 io2)
 
 void checkConnection(bool* connectedToSta, LiquidCrystal_I2C lcd)
 {
-    if (!WiFi.isConnected() && *connectedToSta == true)
+    if (!WiFi.isConnected() && *connectedToSta)
     {
         lcd.clear();
         lcd.setCursor(0, 0);
@@ -63,7 +63,7 @@ void checkConnection(bool* connectedToSta, LiquidCrystal_I2C lcd)
         lcd.print("Connecting!");
         *connectedToSta = false;
     }
-    else if (WiFi.isConnected() && *connectedToSta == false)
+    else if (WiFi.isConnected() && !*connectedToSta)
     {
         lcd.clear();
         lcd.setCursor(0, 0);
